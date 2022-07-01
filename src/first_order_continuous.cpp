@@ -1,4 +1,4 @@
-#include "low_pass_filters/first_order_continuous.h"
+#include "low_pass_filters/first_order_continuous.hpp"
 
 namespace filter
 {
