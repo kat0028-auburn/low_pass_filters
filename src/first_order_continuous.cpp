@@ -3,7 +3,7 @@
 namespace filter
 {
 
-firstOrderContinuous::firstOrderContinuous(double& freq_in)
+FirstOrderContinuous::FirstOrderContinuous(double& freq_in)
 {
     this->freq = freq_in; 
 
@@ -14,17 +14,17 @@ firstOrderContinuous::firstOrderContinuous(double& freq_in)
     this->time_old = this->time_new;
 }
 
-firstOrderContinuous::~firstOrderContinuous()
+FirstOrderContinuous::~FirstOrderContinuous()
 {
     // shutdown
 }
 
-void firstOrderContinuous::updateFreq(double& freq_in)
+void FirstOrderContinuous::updateFreq(double& freq_in)
 {
     this->freq = freq_in;
 }
 
-double firstOrderContinuous::runSisoFilter(double& input)
+double FirstOrderContinuous::runSisoFilter(double& input)
 {
     if(this->time_new == this->time_old)
     {
@@ -41,7 +41,7 @@ double firstOrderContinuous::runSisoFilter(double& input)
     }
 }
 
-double firstOrderContinuous::runObsFilter(double& input)
+double FirstOrderContinuous::runObsFilter(double& input)
 {
     if(this->time_new == this->time_old)
     {
@@ -58,7 +58,7 @@ double firstOrderContinuous::runObsFilter(double& input)
     }
 }
 
-void firstOrderContinuous::runMimoFilter(double& input, double& d_input)
+void FirstOrderContinuous::runMimoFilter(double& input, double& d_input)
 {
     if(this->time_new == this->time_old)
     {
@@ -76,7 +76,7 @@ void firstOrderContinuous::runMimoFilter(double& input, double& d_input)
     }    
 }
 
-double firstOrderContinuous::updateTimeStep()
+double FirstOrderContinuous::updateTimeStep()
 {
     this->time_new = std::chrono::steady_clock::now();
     double dt = std::chrono::duration<double>(this->time_new - this->time_old).count();
@@ -85,7 +85,7 @@ double firstOrderContinuous::updateTimeStep()
     return dt;
 }
 
-void firstOrderContinuous::runFilter(double& input, double& dt)
+void FirstOrderContinuous::runFilter(double& input, double& dt)
 {
     this->d_output = this->freq * (input - this->output);
     this->output += this->d_output * dt;

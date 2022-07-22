@@ -8,7 +8,7 @@
 namespace filter
 {
 
-class firstOrderContinuous
+class FirstOrderContinuous
 {
     private:
         double output;
@@ -23,8 +23,8 @@ class firstOrderContinuous
         void runFilter(double& input, double& dt);
 
     public:
-        firstOrderContinuous(double& freq_in);
-        ~firstOrderContinuous();
+        FirstOrderContinuous(double& freq_in);
+        ~FirstOrderContinuous();
 
         void updateFreq(double& freq_in);
 
